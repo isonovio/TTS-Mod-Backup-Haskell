@@ -25,11 +25,3 @@ downloadFile url filePath_ = do
     else do
         putStrLn $ "Failed to retrieve " ++ url
         pure ""
-
--- main :: IO ()
--- main = do
---     let url = "http://cloud-3.steamusercontent.com/ugc/1840280459060410754/436C88E26D345A91A027265C2EC135E66C67A0E6/"
---     let filePath = "/Users/wangyinong/Downloads/1"
---     x <- downloadFile url filePath
---     putStrLn $ show x
---     pure ()

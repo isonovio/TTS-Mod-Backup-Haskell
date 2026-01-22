@@ -9,7 +9,7 @@ simpleEval ::
     -> (Bool -> Rational -> a)
     -> (String -> a)
     -> ([a] -> a)
-    -> ([(String, a)] -> a) --Either ([(String, JSValue)] -> JSValue) 
+    -> ([(String, a)] -> a) --Either ([(String, JSValue)] -> JSValue)
     -> JSValue
     -> a
 simpleEval fNull fBool fRational fString fArray fObject = eval where

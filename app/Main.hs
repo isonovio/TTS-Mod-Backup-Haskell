@@ -25,12 +25,12 @@ main = do
 
 choose1 :: FilePath -> FilePath -> [(Int, (ModItem, JSValue))] -> IO ()
 choose1 libPath backupPath modItems = do
-    (backupModNum, backupTgtPath, backupJSON) <- getBackupTgt modItems    
+    (backupModNum, backupTgtPath, backupJSON) <- getBackupTgt modItems
     modURLs <- getModURLs backupJSON
 
     let backupPath_ = backupPath ++ backupTgtPath ++ "/"
     Backup.backup libPath backupPath_ backupModNum modURLs
-    
+
     putStrLn $ "You have backed up " ++ backupTgtPath
     putStrLn $ "Do you want to backup another mod? (y/n)"
     f <- getLine

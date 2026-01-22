@@ -35,7 +35,7 @@ type URLState = State ModURLs
 
 findURLs :: JSValue -> ModUrlList
 findURLs jsValue = toList $ eval jsValue `execState` mempty where
-    
+
     eval = JS.simpleEval
         justEmpty
         (const justEmpty)
@@ -43,10 +43,10 @@ findURLs jsValue = toList $ eval jsValue `execState` mempty where
         pure
         (fmap concat . sequence)
         ((>> justEmpty) . traverse addURL)
-    
+
     justEmpty = pure ""
     isURL = (== "http") . take 4
-    
+
     addURL (str, a_) = do
         a <- a_
         if isURL a then
@@ -63,7 +63,7 @@ findURLs jsValue = toList $ eval jsValue `execState` mempty where
                 then addAudio a
             else pure ()
         else pure ()
-    
+
     addAssetbundles, addAudio, addImages, addModels, addPDF, addText :: String -> URLState ()
     addAssetbundles url = modify $ \modURLs -> modURLs {assetbundles    = Set.insert url $ assetbundles modURLs}
     addAudio        url = modify $ \modURLs -> modURLs {audio           = Set.insert url $ audio        modURLs}
